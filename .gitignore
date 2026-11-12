@@ -1,0 +1,12 @@
+.env
+vendor/
+composer.phar
+composer.lock
+storage/logs/*.log
+storage/uploads/*
+!storage/uploads/.gitkeep
+!storage/logs/.gitkeep
+*.DS_Store
+.idea/
+.vscode/
+*.swp
