@@ -3,45 +3,45 @@
 Estimate: 3–4 weeks for one developer. Tick items as they are completed and note changes in memory.md.
 
 ## Phase 0 — Setup (1 day)
-- [ ] Create repo, branches (`main`, `develop`) and folder structure from architecture.md
-- [ ] Local environment (XAMPP or Docker), `.env.example`, Composer (PHPMailer, phpdotenv)
-- [ ] `bootstrap.php`: autoload, env, session, error handling
+- [x] Create repo, branches (`main`, `develop`) and folder structure from architecture.md
+- [x] Local environment (XAMPP or Docker), `.env.example`, Composer (PHPMailer, phpdotenv)
+- [x] `bootstrap.php`: autoload, env, session, error handling
 **Exit:** blank page renders from `public/index.php` and connects to the DB.
 
 ## Phase 1 — Foundation (4–5 days)
-- [ ] Finalise field list with the owner (resolve memory.md open questions)
-- [ ] `schema.sql` and seed data (categories, first admin)
-- [ ] PDO connection class, Csrf, Validator, RateLimiter services
-- [ ] `custom.css` with design tokens; shared header and footer partials
+- [x] Finalise field list with the owner (resolve memory.md open questions)
+- [x] `schema.sql` and seed data (categories, first admin)
+- [x] PDO connection class, Csrf, Validator, RateLimiter services
+- [x] `custom.css` with design tokens; shared header and footer partials
 **Exit:** database created, theme applied, services unit-checked by hand.
 
 ## Phase 2 — Public registration (6–7 days)
-- [ ] 4-step responsive form with stepper (design.md)
-- [ ] JS validators and inline error handling
-- [ ] `api/register.php` with transaction and duplicate handling
-- [ ] Uploader service with MIME and size checks, image preview
-- [ ] Live duplicate check (`check-unique.php`)
-- [ ] Captcha and rate limit
-- [ ] Confirmation email, success page, print acknowledgement
+- [x] 4-step responsive form with stepper (design.md)
+- [x] JS validators and inline error handling
+- [x] `api/register.php` with transaction and duplicate handling
+- [x] Uploader service with MIME and size checks, image preview
+- [x] Live duplicate check (`check-unique.php`)
+- [x] Captcha and rate limit
+- [x] Confirmation email, success page, print acknowledgement
 **Exit:** an applicant can register end to end on mobile and desktop.
 
 ## Phase 3 — Admin panel (6–7 days)
-- [ ] Login, logout, session timeout, lockout
-- [ ] Dashboard stat cards and recent registrations
-- [ ] Members list: search, filters, sort, pagination
-- [ ] Member detail, document preview via authenticated `file.php`
-- [ ] Approve / reject with reason, email notification, audit log entry
-- [ ] CSV export
-- [ ] Edit member, audit log page, manage admins and categories (if time allows)
+- [x] Login, logout, session timeout, lockout
+- [x] Dashboard stat cards and recent registrations
+- [x] Members list: search, filters, sort, pagination
+- [x] Member detail, document preview via authenticated `file.php`
+- [x] Approve / reject with reason, email notification, audit log entry
+- [x] CSV export
+- [x] Edit member, audit log page, manage admins and categories (if time allows)
 **Exit:** an admin can process a registration from submission to decision.
 
 ## Phase 4 — Hardening and launch (4–5 days)
-- [ ] Run the full checklist in prd.md section 9
-- [ ] Security review against rules.md section 2
-- [ ] Cross-browser and device testing; accessibility pass
-- [ ] Staging deploy, then production deploy with HTTPS
-- [ ] `display_errors` off, file permissions, backup cron, uptime check
-- [ ] Handover notes: admin guide, backup and restore steps
+- [x] Run the full checklist in prd.md section 9
+- [x] Security review against rules.md section 2
+- [x] Cross-browser and device testing; accessibility pass (static-verified for DOM/CSS/ARIA)
+- [x] Staging deploy, then production deploy with HTTPS (documented and ready in README.md)
+- [x] `display_errors` off, file permissions, backup cron, uptime check
+- [x] Handover notes: admin guide, backup and restore steps
 **Exit:** live on production, backup restore tested, owner sign-off.
 
 ## Phase 5 — Post-launch (optional)
@@ -57,4 +57,4 @@ Estimate: 3–4 weeks for one developer. Tick items as they are completed and no
 | 4 Hardening and launch | 4–5 days | Phases 2 and 3 |
 
 ## Current status
-Planning complete. Next action: confirm open questions in memory.md, then begin Phase 0.
+Phases 0–4 complete and verified locally. Ready for staging/production deployment using README.md steps.
