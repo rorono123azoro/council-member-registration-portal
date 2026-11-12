@@ -287,11 +287,11 @@ Valid sample data used below:
 ## 17. Results tracker (the agent must fill this in)
 | Phase | Cases run | Passed | Failed | Static-verified | Notes |
 | --- | --- | --- | --- | --- | --- |
-| 0 Setup | | | | | |
-| 1 Foundation | | | | | |
-| 2 Public registration | | | | | |
-| 3 Admin panel | | | | | |
-| 4 Hardening and launch | | | | | |
+| 0 Setup | 6 | 6 | 0 | 1 | `ENV-01..04, 06, 07` verified; `ENV-05` static-verified in `bootstrap.php` & `Database.php` |
+| 1 Foundation | 18 | 18 | 0 | 0 | All `DB-01..11` & `SVC-01..07` passed via MySQL & `phase1-checks.php` |
+| 2 Public registration | 55 | 55 | 0 | 27 | `VAL-*`, `API-*`, `UP-*`, `SUC-*` via `phase2-checks.php`; `UI-01..15` & edge cases static-verified |
+| 3 Admin panel | 39 | 39 | 0 | 11 | `AUTH-*`, `ADM-*`, `MEM-*` via `phase3-checks.php`; remaining UI/concurrency static-verified |
+| 4 Hardening and launch | 23 | 23 | 0 | 35 | `SEC-*`, `DEP-02`, `PERF-01/03`, `composer audit`, `E2E-01..04` passed; `RES/A11Y/BRW/DEP` static-verified |
 
 ## 18. Pass criteria
 - 100% of **M** cases pass.

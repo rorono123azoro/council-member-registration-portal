@@ -129,8 +129,10 @@ set_exception_handler(static function (\Throwable $e) use ($debug): void {
 
 // Security headers (SEC-05, SEC-06)
 if (PHP_SAPI !== 'cli' && !headers_sent()) {
+    $reqPath = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/';
+    $isInlineFile = str_ends_with($reqPath, '/admin/file.php');
     header('X-Content-Type-Options: nosniff');
-    header('X-Frame-Options: DENY');
+    header('X-Frame-Options: ' . ($isInlineFile ? 'SAMEORIGIN' : 'DENY'));
     header('Referrer-Policy: strict-origin-when-cross-origin');
     header(
         "Content-Security-Policy: default-src 'self'; "
@@ -138,7 +140,7 @@ if (PHP_SAPI !== 'cli' && !headers_sent()) {
         . "style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; "
         . "font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net; "
         . "img-src 'self' data: blob:; "
-        . "frame-ancestors 'none'; "
+        . "frame-ancestors " . ($isInlineFile ? "'self'" : "'none'") . "; "
         . "base-uri 'self'; "
         . "form-action 'self'"
     );

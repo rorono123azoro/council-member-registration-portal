@@ -1,0 +1,308 @@
+/* Council Member Registration Portal — Design System Tokens & Custom Styles */
+
+:root {
+  --bs-primary: #1f4e79;
+  --bs-primary-rgb: 31, 78, 121;
+  --bs-link-color: #1f4e79;
+  --bs-link-hover-color: #163a5c;
+  --accent: #c8963e;
+  --bs-success: #2e7d4f;
+  --bs-success-rgb: 46, 125, 79;
+  --bs-danger: #c0392b;
+  --bs-danger-rgb: 192, 57, 43;
+  --bs-warning: #d98e04;
+  --bs-warning-rgb: 217, 142, 4;
+  --bs-body-bg: #f5f7fa;
+  --bs-body-color: #1d2733;
+  --surface: #ffffff;
+  --border: #dde3ea;
+  --radius: 10px;
+  --shadow: 0 2px 10px rgba(16, 24, 40, 0.06);
+  --bs-body-font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+body {
+  background-color: var(--bs-body-bg);
+  color: var(--bs-body-color);
+  font-family: var(--bs-body-font-family);
+  font-size: 16px;
+  line-height: 1.55;
+  overflow-x: hidden;
+}
+
+h1, .h1 { font-size: 1.75rem; font-weight: 600; }
+h2, .h2 { font-size: 1.375rem; font-weight: 600; }
+h3, .h3 { font-size: 1.125rem; font-weight: 600; }
+
+.portal-container {
+  max-width: 1140px;
+}
+
+.form-card-container {
+  max-width: 860px;
+}
+
+/* Header & Hero */
+.site-top-bar {
+  height: 4px;
+  background-color: var(--bs-primary);
+}
+
+.site-header {
+  background-color: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.hero-strip {
+  background: linear-gradient(135deg, #1f4e79 0%, #163a5c 100%);
+  color: #ffffff;
+  border-bottom: 3px solid var(--accent);
+}
+
+/* Cards & Surfaces */
+.portal-card {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+/* Buttons & Inputs — minimum 44px touch target (design.md §5, RES-02) */
+.btn {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  border-radius: 8px;
+}
+
+.btn-sm {
+  min-height: 36px;
+}
+
+.btn-primary {
+  --bs-btn-bg: #1f4e79;
+  --bs-btn-border-color: #1f4e79;
+  --bs-btn-hover-bg: #163a5c;
+  --bs-btn-hover-border-color: #163a5c;
+  --bs-btn-active-bg: #122f4b;
+  --bs-btn-active-border-color: #122f4b;
+}
+
+.btn-outline-primary {
+  --bs-btn-color: #1f4e79;
+  --bs-btn-border-color: #1f4e79;
+  --bs-btn-hover-bg: #1f4e79;
+  --bs-btn-hover-border-color: #1f4e79;
+}
+
+.form-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #1d2733;
+  margin-bottom: 0.375rem;
+}
+
+.required-mark {
+  color: var(--bs-danger);
+  margin-left: 2px;
+}
+
+.form-control,
+.form-select {
+  min-height: 44px;
+  border-color: var(--border);
+  border-radius: 8px;
+}
+
+textarea.form-control {
+  min-height: 96px;
+}
+
+.form-control:focus,
+.form-select:focus,
+.form-check-input:focus {
+  border-color: var(--bs-primary);
+  box-shadow: 0 0 0 0.2rem rgba(31, 78, 121, 0.2);
+}
+
+.invalid-feedback {
+  font-size: 0.8125rem;
+  color: var(--bs-danger);
+}
+
+/* Stepper */
+.stepper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+}
+
+.step-pill {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.625rem 0.5rem;
+  text-align: center;
+  font-size: 0.8125rem;
+  color: #4b5563;
+  transition: all 0.15s ease;
+}
+
+.step-pill .step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #e5e9f0;
+  color: #1d2733;
+  font-weight: 600;
+  font-size: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+
+.step-pill.is-active {
+  border-color: var(--bs-primary);
+  background-color: #eef4fa;
+  color: var(--bs-primary);
+  font-weight: 600;
+}
+
+.step-pill.is-active .step-num {
+  background-color: var(--bs-primary);
+  color: #ffffff;
+}
+
+.step-pill.is-done {
+  border-color: var(--bs-success);
+  color: var(--bs-success);
+}
+
+.step-pill.is-done .step-num {
+  background-color: var(--bs-success);
+  color: #ffffff;
+}
+
+@media (max-width: 575.98px) {
+  .stepper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Upload drop zone */
+.upload-zone {
+  border: 2px dashed var(--border);
+  border-radius: var(--radius);
+  background-color: #fafbfd;
+  padding: 1rem;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.upload-zone:hover,
+.upload-zone.is-dragover {
+  border-color: var(--bs-primary);
+  background-color: #f0f5fa;
+}
+
+.upload-zone.is-invalid {
+  border-color: var(--bs-danger);
+}
+
+.upload-preview-thumb {
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+/* Badges */
+.badge-status-pending {
+  background-color: #fef3c7;
+  color: #92400e;
+  border: 1px solid #fcd34d;
+}
+
+.badge-status-approved {
+  background-color: #d1fae5;
+  color: #065f46;
+  border: 1px solid #6ee7b7;
+}
+
+.badge-status-rejected {
+  background-color: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fca5a5;
+}
+
+.reg-no-badge {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--bs-primary);
+  background-color: #eef4fa;
+  border: 1px solid #c9daec;
+  border-radius: 8px;
+  padding: 0.65rem 1.25rem;
+  display: inline-block;
+}
+
+/* Admin Layout */
+.admin-shell {
+  min-height: 100vh;
+}
+
+.admin-sidebar {
+  width: 250px;
+  background-color: #163a5c;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.admin-sidebar .nav-link {
+  color: rgba(255, 255, 255, 0.85);
+  border-radius: 8px;
+  padding: 0.625rem 0.875rem;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  font-size: 0.9375rem;
+}
+
+.admin-sidebar .nav-link:hover,
+.admin-sidebar .nav-link.active {
+  background-color: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+}
+
+.admin-stat-card {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.25rem;
+}
+
+/* Print styles (UI-15, DES-03) */
+@media print {
+  body {
+    background-color: #ffffff !important;
+  }
+  .no-print,
+  .site-top-bar,
+  .site-header,
+  .site-footer,
+  .btn {
+    display: none !important;
+  }
+  .portal-card {
+    box-shadow: none !important;
+    border: 1px solid #999999 !important;
+  }
+}
+

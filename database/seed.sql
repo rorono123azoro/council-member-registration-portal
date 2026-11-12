@@ -3,29 +3,31 @@
 
 USE `council_portal`;
 
--- Council Categories
-INSERT INTO `council_categories` (`name`, `code`, `is_active`) VALUES
-('Municipal Corporation',   'MC',   1),
-('Town Panchayat',          'TP',   1),
-('Gram Panchayat',          'GP',   1),
-('Nagar Panchayat',         'NP',   1),
-('District Council',        'DC',   1),
-('Block Development Council','BDC', 1),
-('Urban Local Body',        'ULB',  1),
-('Special Area Development Authority', 'SADA', 1)
-ON DUPLICATE KEY UPDATE `name` = VALUES(`name`);
+-- Council Categories (8 active + 1 inactive for archive/validation testing)
+INSERT INTO `categories` (`name`, `code`, `description`, `is_active`) VALUES
+('Fellow Member',                    'FM',   'Senior council fellow with 10+ years experience', 1),
+('Ordinary Member',                  'OM',   'Standard voting council member', 1),
+('Associate Member',                 'AM',   'Early-career or affiliated professional member', 1),
+('Institutional Representative',     'IR',   'Nominated representative from an accredited institution', 1),
+('Municipal / Civic Delegate',       'MCD',  'Elected or appointed civic body delegate', 1),
+('Technical & Advisory Member',      'TAM',  'Subject matter expert serving on advisory panels', 1),
+('Life Member',                      'LM',   'Lifetime council membership category', 1),
+('Student / Trainee Observer',       'STO',  'Non-voting student or trainee council observer', 1),
+('Legacy Honorary (Archived)',       'LHA',  'Retired category kept for historical records', 0)
+ON DUPLICATE KEY UPDATE
+    `name` = VALUES(`name`),
+    `description` = VALUES(`description`),
+    `is_active` = VALUES(`is_active`);
 
--- Default Admin account
--- Password: Admin@1234  (MUST BE CHANGED AFTER FIRST LOGIN)
-INSERT INTO `admins` (`username`, `email`, `password_hash`, `is_active`) VALUES (
+-- Default Super Admin account
+-- Username: admin | Email: admin@councilportal.local
+-- Temporary Password: Admin@1234 (MUST BE CHANGED ON FIRST LOGIN)
+INSERT INTO `admins` (`name`, `username`, `email`, `password_hash`, `role`, `is_active`, `must_change_password`) VALUES (
+    'System Administrator',
     'admin',
-    'admin@councilportal.in',
-    -- Run: php -r "echo password_hash('Admin@1234', PASSWORD_BCRYPT, ['cost'=>12]);"
-    -- and replace the hash below before importing
-    '$2y$12$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
+    'admin@councilportal.local',
+    '$2y$12$jLnYmlV.2q8Di8BaU0UFEurBIPRwst2XXw9EsJrriHs2WsnMVuBBm',
+    'super_admin',
+    1,
     1
 ) ON DUPLICATE KEY UPDATE `username` = `username`;
-
--- NOTE: The hash above is a placeholder. Run the following PHP snippet
--- to generate a real hash and UPDATE the admins table:
---   php -r "echo password_hash('Admin@1234', PASSWORD_BCRYPT, ['cost'=>12]);"
