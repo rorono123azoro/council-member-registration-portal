@@ -3,7 +3,6 @@
 <p align="center">
   <strong>A secure, mobile-first online membership registration and administrative review portal.</strong>
 </p>
-
 <p align="center">
   <img alt="PHP 8.1+" src="https://img.shields.io/badge/PHP-8.1%2B-777BB4?style=flat-square&logo=php&logoColor=white">
   <img alt="MySQL 8 / MariaDB" src="https://img.shields.io/badge/MySQL-8.0%2B%20%2F%20MariaDB-4479A1?style=flat-square&logo=mysql&logoColor=white">
@@ -13,7 +12,6 @@
 </p>
 
 ---
-
 ## Overview
 
 The **Council Member Registration Portal** replaces paper and ad-hoc registration workflows with a structured, auditable web application built strictly on **HTML5**, **vanilla JavaScript (ES6 modules, `fetch`)**, **Bootstrap 5.3**, **PHP 8.1+ (PDO)**, and **MySQL 8**. Only two Composer dependencies are used: `phpmailer/phpmailer` and `vlucas/phpdotenv`.
@@ -21,7 +19,7 @@ The **Council Member Registration Portal** replaces paper and ad-hoc registratio
 ### Key Highlights
 - **4-Step Public Registration Wizard:** Responsive from 360 px with progress bar, client + authoritative server-side validation, live email/mobile duplicate detection, `localStorage` draft persistence, image thumbnail preview, and printable acknowledgement (`REG-YYYY-NNNNNN`).
 - **Defense-in-Depth Security:** Strict PDO prepared statements, per-session CSRF tokens on every `POST`, `htmlspecialchars` output escaping, `finfo` real-MIME file validation stored outside the web root, dual anti-bot protection (math challenge + honeypot), IP rate limiting, and brute-force login lockout.
-- **Full Admin Review Console:** Role-based access (`reviewer` & `super_admin`), dashboard metrics, multi-filter search & sortable pagination, authenticated document preview/download, approve/reject workflow with required rejection reasons, UTF-8 BOM CSV export with spreadsheet formula neutralization, and an append-only audit log.
+**Full Admin Review Console:** Role-based access (`reviewer` & `super_admin`), dashboard metrics, multi-filter search & sortable pagination, authenticated document preview/download, approve/reject workflow with required rejection reasons, UTF-8 BOM CSV export with spreadsheet formula neutralization, and an append-only audit log.
 
 ---
 
